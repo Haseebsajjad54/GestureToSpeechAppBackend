@@ -3,9 +3,9 @@ from app.schemas import PredictionRequest, PredictionResponse
 from app.model import predict
 
 app = FastAPI(title="Gesture Recognition API")
-@app.get("/")
+@app.api_route("/", methods=["GET", "HEAD"])
 def home():
-    return {"message": "Congratulations! API is running successfully on Render!"}
+    return {"status": "ok", "message": "Gesture-to-Speech backend is live!"}
 
 @app.post("/predict", response_model=PredictionResponse)
 def get_prediction(request: PredictionRequest):
